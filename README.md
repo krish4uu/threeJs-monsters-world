@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ThreeJs interactive 3D Model (Currently Godzilla)
 
-## Getting Started
+This project is planned to have different `interactive 3D Titan Monsters models` and Currently showcases a 3D model of Godzilla using Three.js with `react-three-fiber` in a Next.js application. The model performs animations, reacts to mouse clicks, and changes the GodZilla and text color based on user interactions.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 3D model rendering with Three.js and `react-three-fiber`
+- Animated Godzilla model with click-triggered animation and sound
+- Dynamic text and GodZilla color changes
+- Smooth transitions and interaction handling
+- Handle camera angles with mouse (`hold right or hold left` click)
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- You have installed Node.js and npm
+- You have a modern web browser (Chrome)
+
+## Installation
+
+1. Clone the repository:
+
+```sh
+git clone https://github.com/krish4uu/threeJs-monsters-world.git
+cd threeJs-monsters-world
+
+```
+2. Install dependencies:
+
+```sh
+npm install
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Running the Project
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Start the development server:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```sh 
+npm run dev
 
-## Learn More
+```
+2. Open your browser and navigate to:
 
-To learn more about Next.js, take a look at the following resources:
+```sh
+http://localhost:3000
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+## Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Click on the Godzilla model to trigger the animation and sound.
+- The text and GodZilla's color will change to `sky-blue` while the animation is playing.
+- After the animation completes, the colors will smoothly transition back to their original states.
 
-## Deploy on Vercel
+## ScreenShot
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+https://github.com/user-attachments/assets/d337fab6-8973-498c-91b0-bc0f7a026fe4
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+### Reference
+
+- GodZilla GLB Model From:  `https://sketchfab.com`
