@@ -7,7 +7,8 @@ useGLTF.preload("/godzilla.glb");
 
 export default function Model({ setTextColor }: any) {
   const group = useRef<Group>(null);
-  const { animations, scene } = useGLTF("/godzilla.glb");
+
+  const { animations, scene } = useGLTF("../godzilla.glb");
   const { actions } = useAnimations(animations, scene);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
