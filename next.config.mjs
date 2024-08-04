@@ -9,6 +9,6 @@ const nextConfig = {
       path: "/",
     },
     basePath: "/threeJs-monsters-world",
-    assetPrefix: "/threeJs-monsters-world"
+    assetPrefix: "./threeJs-monsters-world"
 };
 export default nextConfig;
