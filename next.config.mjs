@@ -8,5 +8,6 @@ const nextConfig = {
       loader: "akamai",
       path: "/",
     },
+    basePath: "/threeJs-monsters-world"
 };
 export default nextConfig;
