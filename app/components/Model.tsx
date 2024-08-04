@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Group } from "three";
 console.log(`DEV env: ${process.env.NEXT_PUBLIC_DEV}`)
 const modelPath = process.env.NEXT_PUBLIC_DEV === 'true' ? "/godzilla.glb": "/threeJs-monsters-world/godzilla.glb"
-
+const audioPath = process.env.NEXT_PUBLIC_DEV === 'true' ? "/roar.mp3": "/threeJs-monsters-world/roar.mp3"
 useGLTF.preload(modelPath);
 
 export default function Model({ setTextColor }: any) {
@@ -22,7 +22,7 @@ export default function Model({ setTextColor }: any) {
     if (actions["Godzilla, Why are you soo creepy?"]) {
       actions["Godzilla, Why are you soo creepy?"].play().paused = true;
     }
-    audioRef.current = new Audio("/roar.mp3");
+    audioRef.current = new Audio(audioPath);
   }, [actions]);
 
   const handleClick = () => {
