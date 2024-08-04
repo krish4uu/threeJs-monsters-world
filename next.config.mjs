@@ -8,7 +8,7 @@ const nextConfig = {
       loader: "akamai",
       path: "/",
     },
-    basePath: "/threeJs-monsters-world",
-    assetPrefix: "./threeJs-monsters-world"
+    basePath: "",
+    assetPrefix: "/threeJs-monsters-world"
 };
 export default nextConfig;
