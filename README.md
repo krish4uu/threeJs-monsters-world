@@ -35,13 +35,21 @@ npm install
 
 ## Running the Project
 
-1. Start the development server:
+1. Create `.env.local` file at root:
+
+```sh 
+ NEXT_PUBLIC_DEV = true
+
+```
+
+2. Start the development server:
 
 ```sh 
 npm run dev
 
 ```
-2. Open your browser and navigate to:
+
+3. Open your browser and navigate to:
 
 ```sh
 http://localhost:3000

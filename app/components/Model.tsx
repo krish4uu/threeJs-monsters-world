@@ -2,13 +2,15 @@ import { useAnimations, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 import { Group } from "three";
+console.log(`DEV env: ${process.env.NEXT_PUBLIC_DEV}`)
+const modelPath = process.env.NEXT_PUBLIC_DEV === 'true' ? "/godzilla.glb": "/threeJs-monsters-world/godzilla.glb"
 
-useGLTF.preload("/godzilla.glb");
+useGLTF.preload(modelPath);
 
 export default function Model({ setTextColor }: any) {
   const group = useRef<Group>(null);
 
-  const { animations, scene } = useGLTF("../godzilla.glb");
+  const { animations, scene } = useGLTF(modelPath);
   const { actions } = useAnimations(animations, scene);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
