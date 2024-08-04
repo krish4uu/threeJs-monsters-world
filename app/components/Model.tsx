@@ -1,10 +1,16 @@
 import { useAnimations, useGLTF } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 import { Group } from "three";
-console.log(`DEV env: ${process.env.NEXT_PUBLIC_DEV}`)
-const modelPath = process.env.NEXT_PUBLIC_DEV === 'true' ? "/godzilla.glb": "/threeJs-monsters-world/godzilla.glb"
-const audioPath = process.env.NEXT_PUBLIC_DEV === 'true' ? "/roar.mp3": "/threeJs-monsters-world/roar.mp3"
+console.log(`DEV env: ${process.env.NEXT_PUBLIC_DEV}`);
+const modelPath =
+  process.env.NEXT_PUBLIC_DEV === "true"
+    ? "/godzilla.glb"
+    : "/threeJs-monsters-world/godzilla.glb";
+const audioPath =
+  process.env.NEXT_PUBLIC_DEV === "true"
+    ? "/roar.mp3"
+    : "/threeJs-monsters-world/roar.mp3";
 useGLTF.preload(modelPath);
 
 export default function Model({ setTextColor }: any) {
@@ -17,6 +23,7 @@ export default function Model({ setTextColor }: any) {
   const animationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const resetTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const textColorTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const { viewport } = useThree();
 
   useEffect(() => {
     if (actions["Godzilla, Why are you soo creepy?"]) {
@@ -102,8 +109,12 @@ export default function Model({ setTextColor }: any) {
   return (
     <group
       ref={group}
-      position={[-5, -35, -45]}
-      scale={[0.5, 0.5, 0.5]}
+      position={[0, -viewport.aspect * 70, -viewport.aspect * 135]}
+      scale={[
+        viewport.aspect / 1.5,
+        viewport.aspect / 1.5,
+        viewport.aspect / 1.5,
+      ]}
       onClick={handleClick}
     >
       <primitive object={scene} />
