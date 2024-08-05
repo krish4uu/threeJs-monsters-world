@@ -13,7 +13,7 @@ const audioPath =
     : "/threeJs-monsters-world/roar.mp3";
 useGLTF.preload(modelPath);
 
-export default function Model({ setTextColor }: any) {
+export default function GodzillaModel({ setTextColor }: any) {
   const group = useRef<Group>(null);
 
   const { animations, scene } = useGLTF(modelPath);
@@ -25,15 +25,17 @@ export default function Model({ setTextColor }: any) {
   const textColorTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { viewport } = useThree();
 
+  const animatedAction = actions["Godzilla, Why are you soo creepy?"]
+
   useEffect(() => {
-    if (actions["Godzilla, Why are you soo creepy?"]) {
-      actions["Godzilla, Why are you soo creepy?"].play().paused = true;
+    if (animatedAction) {
+      animatedAction.play().paused = true;
     }
     audioRef.current = new Audio(audioPath);
   }, [actions]);
 
   const handleClick = () => {
-    if (actions["Godzilla, Why are you soo creepy?"]) {
+    if (animatedAction) {
       // Clear any existing timeouts
       if (animationTimeoutRef.current) {
         clearTimeout(animationTimeoutRef.current);
@@ -46,13 +48,13 @@ export default function Model({ setTextColor }: any) {
       }
 
       // Start animation and sound
-      actions["Godzilla, Why are you soo creepy?"].reset().play();
+      animatedAction.reset().play();
       if (audioRef.current) {
         audioRef.current.volume = 1;
         audioRef.current.play();
       }
 
-      // Change text to sky-blue
+      // Change text
       setTextColor("#00F1F3");
 
       // Set timeout to start fade-out
@@ -64,8 +66,8 @@ export default function Model({ setTextColor }: any) {
           const elapsed = Date.now() - fadeOutStart;
           const progress = elapsed / fadeOutDuration;
 
-          if (actions["Godzilla, Why are you soo creepy?"]) {
-            actions["Godzilla, Why are you soo creepy?"].timeScale = Math.max(
+          if (animatedAction) {
+            animatedAction.timeScale = Math.max(
               1 - progress,
               0
             );
@@ -78,9 +80,9 @@ export default function Model({ setTextColor }: any) {
           if (progress < 1) {
             requestAnimationFrame(fadeOut);
           } else {
-            if (actions["Godzilla, Why are you soo creepy?"]) {
-              actions["Godzilla, Why are you soo creepy?"].paused = true;
-              actions["Godzilla, Why are you soo creepy?"].timeScale = 1; // Reset timeScale
+            if (animatedAction) {
+              animatedAction.paused = true;
+              animatedAction.timeScale = 1; // Reset timeScale
             }
             if (audioRef.current) {
               audioRef.current.pause();
@@ -99,8 +101,8 @@ export default function Model({ setTextColor }: any) {
 
       // Set timeout to reset animation state after 5 seconds
       resetTimeoutRef.current = setTimeout(() => {
-        if (actions["Godzilla, Why are you soo creepy?"]) {
-          actions["Godzilla, Why are you soo creepy?"].time = 0; // Reset the animation
+        if (animatedAction) {
+          animatedAction.time = 0; // Reset the animation
         }
       }, 5000);
     }
